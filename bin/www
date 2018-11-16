@@ -6,12 +6,20 @@ const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const listeners = require('./io')
 const port = process.env.PORT
-
+const socket = {
+  listeners
+}
 
 app.set('port', port);
 
  http.listen(port, function(){
    console.log('listening on *:' + port);
+   init();
  });
 
-listeners(io);
+
+
+function init() {
+  socket.listeners = listeners(io);
+  socket.listeners.init();
+}
