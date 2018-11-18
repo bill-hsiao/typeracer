@@ -9,12 +9,12 @@
     <p>Welcome to <%= title %></p>
 
 <div id="root">
-  <div id="forms">
+  <div id="name_form">
     Enter your name
     <br>
-    <input type="text" id="playername">
+    <input type="text" id="name_field">
     <br>
-    <input type="submit" id="submit">
+    <input type="submit" id="name_submit">
   </div>
 
 
@@ -25,12 +25,20 @@
 
 </div>
 
+<!-- classes -->
+<script src="/javascripts/src/Game.js"></script>
+<script src="/javascripts/src/Player.js"></script>
 
 
+<!-- socket & socket handlers -->
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="/javascripts/sockets.js"></script>
+
+<!-- app -->
 <script src="/javascripts/app.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-  <script src="/javascripts/sockets.js">
 
-  </script>
+
+
   </body>
 </html>

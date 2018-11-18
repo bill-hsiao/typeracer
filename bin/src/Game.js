@@ -7,7 +7,11 @@ class Game {
   constructor() {
     this.players = [];
   }
-  newPlayer() {
-    let player = new Player()
+  newPlayer(id, name) {
+    let player = new Player(this.game, id, name);
+      this.game.players.push(player);
+      //broadcast new player
+
   }
+
 }

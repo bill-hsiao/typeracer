@@ -8,26 +8,24 @@
 // }
 
 
+//client connects, unique id is generated
+//client sets name, then sends name and id back to server
+//new player is created on server, pushed into server game instance then broadcasted to all clients
+//clients receive broadcast and then pushes it into their client game instances
+
+//set player
 
 
+//initialize game
 
+(function() {
+  function init() {
+    const handler = new Handler(document);
+    const game = new Game;
+    handler.nameHandler();
 
-function enterName() {
-  var name = {
-    value: ""
   }
-  const form = {
-    field: document.getElementById('playername'),
-    submit: document.getElementById('submit')
-  }
-  form.field.addEventListener('keydown', function(evt) {
-    name.value = evt.target.value;
-    form.field.value = evt.target.value;
-  });
-  form.submit.addEventListener('click', function() {
-    //set the name
-    console.log(name.value);
-    return name.value
 
-  });
-}
+
+
+})();

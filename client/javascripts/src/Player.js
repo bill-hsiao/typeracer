@@ -1,9 +1,10 @@
 class Player {
-  constructor(game, id, name) {
+  constructor(game, id) {
     this.game = game;
     this.id = id;
-    this.name = name;
+    this.name = null;
 
     this.progress = [];
   }
+//define methods as static methods
 }

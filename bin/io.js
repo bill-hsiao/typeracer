@@ -9,35 +9,39 @@ function socketController(io, data) {
   //   socket.broadcast.emit('user connected');
   // });
 
+  function onConnect(client) {
+    client.on('connect', newConnect)
+  }
+
   function onConnect(socket) {
     socket.broadcast.emit('a user has connected');
     socket.on("newPlayer", newPlayer);
     socket.on("disconnect", onDisconnect);
     socket.on("newPlayer", newPlayer);
-    socket.on("connect", newConnect);
+    socket.on("newClient", newConnect);
     socket.on("message", message)
+    socket.on("haha", () => console.log('haha'))
     //client.on("something", doSomething)
     //game host can input paragraph
   }
 
   function newPlayer() {
-    console.log(`player ${this.id} has joined`);
-    this.broadcast.emit('newPlayer', this.id)
+
   }
 
   function onDisconnect() {
-    console.log(`player ${this.id} has disconnected`);
 
-    this.broadcast.emit('remove player', this.id)
   }
 
-  function newConnect() {
-    console.log(this.id + 'hello');
-    this.broadcast.emit(this.id)
+  function newConnect(playerId) {
+    console.log(`client ${playerId} has connected`);
+    //this.broadcast.emit(this.id)
+    io.sockets.to(playerId).emit('receivePlayerId', {id: playerId});
   }
 
-  function message(msg) {
-    console.log(`${msg} called from io`);
+
+  function message(oops) {
+    console.log(`${oops} called from io`);
   }
 
   return {

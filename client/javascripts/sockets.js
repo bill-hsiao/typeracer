@@ -8,27 +8,36 @@ var socket = io.connect('http://localhost:3000');
 // });
 
 socket.on('connect', onConnect);
-socket.on('newPlayer', newPlayer);
+
 socket.on('disconnect', onDisconnect);
+
+socket.on('newPlayer', newPlayer);
+
+socket.on('receivePlayerId', newPlayer);
 
 
 
 
 
 function onConnect() {
-  console.log(socket.id);
-  socket.send(socket.id);
-  console.log(this.id);
-  console.log(this);
-  socket.on('message', function(msg) {
-    console.log(msg);
-  })
+  let playerId = socket.id;
+  if (!playerId) {
+    return
+  }
+  socket.emit('newClient', playerId);
+  //socket.send(socket.id);
+  //
+  // console.log(this);
+  // socket.on('haha', function(msg) {
+  //   console.log(msg);
+  // })
 
 }
 
-function newPlayer() {
-  socket.on('')
-  this.broadcast.emit(socket.id)
+function newPlayer(playerId) {
+  console.log(playerId.id);
+  //socket.on('')
+  //this.broadcast.emit(socket.id)
 }
 
 function onDisconnect() {
